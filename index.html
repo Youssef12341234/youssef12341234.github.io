@@ -125,6 +125,8 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
 #top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--ac);color:var(--ac-ink);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
 #top.show{opacity:1;pointer-events:auto}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+.tag{display:inline-flex;align-items:center;gap:7px}
+.tag img{width:16px;height:16px;box-sizing:content-box;background:#fff;border-radius:4px;padding:2px}
 </style>
 </head>
 <body>
@@ -172,7 +174,8 @@ footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-s
       </div>
     </div>
     <!-- Pour ajouter ta photo : remplace le contenu de .avatar par <img src="photo.jpg" alt="Youssef Hachimi Alaoui"> -->
- <img src="photo.png" alt="Youssef Hachimi Alaoui">
+    <div class="avatar" aria-label="Photo de profil">YH</div>
+  </div>
 </section>
 
 <section id="experiences">
@@ -358,7 +361,7 @@ $$('.f').forEach(b=>b.onclick=()=>{
 /* Compétences par onglets */
 const skills={
  'Data & Analyse':['Python','SQL / PL-SQL','pandas','NumPy','Jupyter / Google Colab','Nettoyage de données','Exploration de données','Modélisation de données'],
- 'Machine Learning & IA':['Machine learning','Scikit-Learn','NLP','SpaCy','Sentence-Transformers','Embeddings','Systèmes RAG','LangGraph'],
+ 'Machine Learning & IA':['Machine learning','Scikit-Learn','TensorFlow','NLP','SpaCy','Sentence-Transformers','Embeddings','Systèmes RAG','LangGraph'],
  'BI & Visualisation':['Power BI','Tableaux de bord interactifs','Indicateurs de performance (KPI)','Streamlit','Visualisation avec Python'],
  'Bases de données':['Oracle','PostgreSQL','SQL Server','MySQL','MongoDB','Redis','Neo4j','Cassandra'],
  'Outils & déploiement':['Git / GitHub','Linux / Unix','Hugging Face Spaces','n8n (automatisation)','API REST','Virtualisation / cloud','Oracle Cloud (OCI AI Foundations)'],
@@ -389,6 +392,23 @@ addEventListener('scroll',()=>{
   $('#top').classList.toggle('show',scrollY>600);
 },{passive:true});
 $('#top').onclick=()=>scrollTo({top:0});
+
+/* Logos des technologies */
+const ICONS={'Python':'python','pandas':'pandas','NumPy':'numpy','Jupyter / Google Colab':'jupyter','Jupyter':'jupyter','Scikit-Learn':'scikitlearn','TensorFlow':'tensorflow','SpaCy':'spacy','Sentence-Transformers':'huggingface','LangGraph':'langchain','Power BI':'powerbi','Streamlit':'streamlit','Oracle':'oracle','PostgreSQL':'postgresql','SQL Server':'microsoftsqlserver','MySQL':'mysql','MongoDB':'mongodb','Redis':'redis','Neo4j':'neo4j','Cassandra':'apachecassandra','Git / GitHub':'git','Linux / Unix':'linux','Hugging Face Spaces':'huggingface','n8n (automatisation)':'n8n','Oracle Cloud (OCI AI Foundations)':'oracle','Java':'openjdk','C / C++':'cplusplus','C#':'csharp','JavaScript':'javascript','TypeScript':'typescript','PHP':'php','React':'react','Node.js':'nodedotjs','Django':'django','Laravel':'laravel','ASP.NET Core MVC':'dotnet'};
+function addIcons(){
+  $$('.tag').forEach(t=>{
+    if(t.querySelector('img'))return;
+    const slug=ICONS[t.textContent.trim()];
+    if(!slug)return;
+    const img=document.createElement('img');
+    img.src='https://cdn.simpleicons.org/'+slug;
+    img.alt='';img.loading='lazy';
+    img.onerror=()=>img.remove();
+    t.prepend(img);
+  });
+}
+addIcons();
+
 </script>
 </body>
 </html>
