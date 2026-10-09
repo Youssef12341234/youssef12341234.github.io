@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr" data-accent="bleu" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Youssef Hachimi Alaoui · Ingénieur Data Science & IA</title>
+<meta name="description" content="Portfolio de Youssef Hachimi Alaoui, élève ingénieur Data Science & IA à l'EMSI Rabat, à la recherche d'un stage PFE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--surface:#fff;--ink:#0f1b3d;--muted:#58627d;--line:#dde2ee;--chip:#e8edf8;--ac:#2456e6;--ac-ink:#fff;--ac-soft:#e3eaff}
+[data-accent="vert"]{--ac:#0b8a63;--ac-soft:#dcf4ea}
+[data-accent="violet"]{--ac:#6d3fe0;--ac-soft:#ece5ff}
+[data-accent="orange"]{--ac:#d9480f;--ac-soft:#ffe8dc}
+[data-theme="dark"]{--bg:#0b1020;--surface:#141b30;--ink:#eef1fa;--muted:#9aa5c4;--line:#27304d;--chip:#1d2644;--ac-soft:#1d2646}
+[data-theme="dark"][data-accent="bleu"]{--ac:#6e92ff}
+[data-theme="dark"][data-accent="vert"]{--ac:#3ccf9d;--ac-ink:#06251b}
+[data-theme="dark"][data-accent="violet"]{--ac:#a58bff}
+[data-theme="dark"][data-accent="orange"]{--ac:#ff8a52;--ac-ink:#2b1004}
+[data-theme="dark"][data-accent="bleu"]{--ac-ink:#0b1020}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "Source Sans 3",system-ui,sans-serif;transition:background .3s,color .3s}
+h1,h2,h3{font-family:Sora,system-ui,sans-serif;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,3vw,2.2rem);margin-bottom:32px}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:16px;height:64px}
+.logo{font:800 1.15rem Sora,sans-serif;text-decoration:none;margin-right:auto}
+.logo b{color:var(--ac)}
+nav{display:flex;gap:4px}
+nav a{padding:8px 12px;border-radius:999px;text-decoration:none;font-weight:600;font-size:.95rem;color:var(--muted)}
+nav a:hover,nav a.on{background:var(--ac-soft);color:var(--ac)}
+.tools{display:flex;align-items:center;gap:10px}
+.dots{display:flex;gap:6px}
+.dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line);cursor:pointer;padding:0}
+.dot[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.icon{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font-size:1rem}
+.icon:hover{border-color:var(--ac)}
+.burger{display:none}
+@media(max-width:860px){nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);padding:12px 24px;border-bottom:1px solid var(--line)}nav.open{display:flex}.burger{display:inline-block}}
+
+/* hero */
+.hero{padding:72px 0 80px;border:0}
+.hero .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:var(--ac);color:var(--ac-ink);padding:6px 16px;border-radius:999px;font-weight:600;font-size:.92rem}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.25}}
+h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:800;letter-spacing:-.03em;margin:22px 0 14px}
+.role{font:700 clamp(1.2rem,2.4vw,1.55rem) Sora,sans-serif;color:var(--ac);min-height:1.5em}
+.role span{border-right:3px solid var(--ac);padding-right:4px;animation:caret 1s steps(1) infinite}
+@keyframes caret{50%{border-color:transparent}}
+.lead{color:var(--muted);max-width:56ch;margin:14px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:12px;border:2px solid var(--ink);background:transparent;color:var(--ink);font:700 .98rem "Source Sans 3",sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:var(--ink);color:var(--bg)}
+.btn.acc{background:var(--ac);border-color:var(--ac);color:var(--ac-ink)}
+.avatar{justify-self:center;width:min(300px,70vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:var(--ac);color:var(--ac-ink);font:800 5.5rem Sora,sans-serif;border:6px solid var(--surface);box-shadow:0 0 0 3px var(--ac);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.stats{display:flex;gap:28px;margin-top:34px;flex-wrap:wrap}
+.stats div{font-size:.9rem;color:var(--muted)}
+.stats b{display:block;font:800 1.9rem Sora,sans-serif;color:var(--ink)}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.avatar{order:-1;width:200px;font-size:4rem}}
+
+/* experiences */
+.tl{display:grid;gap:18px}
+.xp{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--ac);border-radius:14px;padding:0;overflow:hidden}
+.xp button{all:unset;box-sizing:border-box;display:flex;width:100%;gap:16px;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer}
+.xp h3{font-size:1.1rem}
+.xp small{color:var(--muted);font-size:.95rem}
+.xp .plus{font:700 1.5rem Sora;color:var(--ac);transition:transform .2s}
+.xp[open] .plus{transform:rotate(45deg)}
+.xp .body{display:none;padding:0 24px 22px}
+.xp[open] .body{display:block}
+.xp p{margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:var(--chip);padding:3px 11px;border-radius:7px;font-weight:600;font-size:.85rem}
+
+/* projets */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px}
+.f{padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 .95rem "Source Sans 3",sans-serif;cursor:pointer}
+.f:hover{border-color:var(--ac)}
+.f[aria-pressed="true"]{background:var(--ac);border-color:var(--ac);color:var(--ac-ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--ac);transform:translateY(-3px)}
+.card h3{font-size:1.05rem}
+.card p{margin:0;color:var(--muted);font-size:.97rem;flex:1}
+.card[hidden]{display:none}
+.cat{font-weight:600;font-size:.85rem;color:var(--ac)}
+
+/* competences */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.panel{display:none;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px}
+.panel.on{display:block}
+.panel .tags{gap:10px}
+.panel .tag{background:var(--ac-soft);color:var(--ac);font-size:.95rem;padding:6px 14px;border-radius:999px}
+
+/* formation */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:800px){.cols{grid-template-columns:1fr}}
+.list{list-style:none;margin:0;padding:0}
+.list li{padding:14px 0;border-bottom:1px solid var(--line)}
+.list b{display:block;font-family:Sora,sans-serif;font-weight:700;font-size:1rem}
+.list small{color:var(--muted);font-size:.93rem}
+.bars li{display:flex;justify-content:space-between;gap:16px;align-items:center}
+.lv{display:flex;gap:4px}
+.lv i{width:22px;height:7px;border-radius:4px;background:var(--line)}
+.lv i.f{background:var(--ac)}
+.qual{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.qual span{background:var(--ac-soft);color:var(--ac);padding:8px 16px;border-radius:999px;font-weight:600}
+
+/* contact */
+.contact{text-align:left}
+.contact p{max-width:54ch;color:var(--muted)}
+.copied{font-weight:600;color:var(--ac);min-height:1.6em;margin-top:12px}
+footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+#top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--ac);color:var(--ac-ink);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .2s}
+#top.show{opacity:1;pointer-events:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#accueil">Youssef<b>.</b></a>
+    <nav id="menu" aria-label="Navigation principale">
+      <a href="#experiences">Expériences</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <div class="dots" role="group" aria-label="Couleur du site">
+        <button class="dot" data-c="bleu" style="background:#2456e6" aria-label="Bleu" aria-pressed="true"></button>
+        <button class="dot" data-c="vert" style="background:#0b8a63" aria-label="Vert" aria-pressed="false"></button>
+        <button class="dot" data-c="violet" style="background:#6d3fe0" aria-label="Violet" aria-pressed="false"></button>
+        <button class="dot" data-c="orange" style="background:#d9480f" aria-label="Orange" aria-pressed="false"></button>
+      </div>
+      <button class="icon" id="mode" aria-label="Basculer clair / sombre">☾</button>
+      <button class="icon burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div class="wrap">
+    <div>
+      <span class="badge">Disponible pour un stage PFE</span>
+      <h1>Youssef Hachimi Alaoui</h1>
+      <div class="role" aria-live="polite"><span id="typed">Ingénieur Data Science & IA</span></div>
+      <p class="lead">Élève ingénieur en Data Science et IA à l'EMSI Rabat. Motivé, curieux et rigoureux, je cherche une équipe dynamique pour relever de nouveaux défis et contribuer à des projets innovants.</p>
+      <div class="btns">
+        <a class="btn main" href="#contact">Me contacter</a>
+        <a class="btn" href="#projets">Voir mes projets</a>
+        <a class="btn acc" href="CV_Youssef_Hachimi_Alaoui.pdf" download>Télécharger mon CV</a>
+      </div>
+      <div class="stats">
+        <div><b>3</b>stages réalisés</div>
+        <div><b>12</b>projets</div>
+        <div><b>7</b>certifications</div>
+      </div>
+    </div>
+    <!-- Pour ajouter ta photo : remplace le contenu de .avatar par <img src="photo.jpg" alt="Youssef Hachimi Alaoui"> -->
+  <div class="avatar"><img src="photo.jpg" alt="Youssef Hachimi Alaoui"></div>  </div>
+</section>
+
+<section id="experiences">
+  <div class="wrap">
+    <h2>Expériences</h2>
+    <div class="tl">
+      <div class="xp" open>
+        <button aria-expanded="true"><span><h3>Stagiaire en IA et Ingénierie des Données (NLP / HR Tech)</h3><small>Sofrecom (Technopolis), Salé El Jadida · juillet 2026 · 2 mois</small></span><span class="plus">+</span></button>
+        <div class="body">
+          <p>Outil interne de tri et de matching de candidatures pour l'équipe RH : extraction automatique des compétences d'un CV, score de matching pondéré avec une fiche de poste, et pipeline qui traite les CV déposés dans un dossier surveillé, sans intervention manuelle, avec identification stable de chaque candidat en base.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">SpaCy</span><span class="tag">Sentence-Transformers</span><span class="tag">Scikit-Learn</span><span class="tag">Streamlit</span><span class="tag">PostgreSQL</span></div>
+        </div>
+      </div>
+      <div class="xp">
+        <button aria-expanded="false"><span><h3>Stagiaire Data Analyst – Power BI</h3><small>Académie Régionale de l'Éducation et de la Formation, Rabat · octobre 2025</small></span><span class="plus">+</span></button>
+        <div class="body">
+          <p>Manipulation, traitement et visualisation de données. Réalisation d'une application décisionnelle : nettoyage des données, modélisation et tableaux de bord interactifs pour suivre les indicateurs de performance.</p>
+          <div class="tags"><span class="tag">Power BI</span><span class="tag">Nettoyage de données</span><span class="tag">Modélisation</span><span class="tag">Tableaux de bord</span></div>
+        </div>
+      </div>
+      <div class="xp">
+        <button aria-expanded="false"><span><h3>Stagiaire en Administration de Bases de Données (DBA)</h3><small>Direction Générale des Impôts (DGI), Rabat · juillet 2025</small></span><span class="plus">+</span></button>
+        <div class="body">
+          <p>Projet de chiffrement et de hachage de données sensibles avec SHA-256 et SHA-512, sur Oracle et SQL Server Management Studio, puis création d'une application mobile de visualisation pour appliquer les compétences acquises.</p>
+          <div class="tags"><span class="tag">Oracle</span><span class="tag">SQL Server</span><span class="tag">SHA-256 / SHA-512</span><span class="tag">Mobile</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projets">
+  <div class="wrap">
+    <h2>Projets</h2>
+    <div class="filters" role="group" aria-label="Filtrer les projets">
+      <button class="f" data-f="all" aria-pressed="true">Tous</button>
+      <button class="f" data-f="ia" aria-pressed="false">Data & IA</button>
+      <button class="f" data-f="web" aria-pressed="false">Web</button>
+      <button class="f" data-f="bd" aria-pressed="false">Bases de données</button>
+      <button class="f" data-f="desk" aria-pressed="false">Applications bureau</button>
+      <button class="f" data-f="sys" aria-pressed="false">Systèmes & cloud</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="competences">
+  <div class="wrap">
+    <h2>Compétences</h2>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div id="panels"></div>
+  </div>
+</section>
+
+<section id="parcours">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2>Formation</h2>
+        <ul class="list">
+          <li><b>Ingénierie Informatique, spécialité Data Science & IA</b><small>EMSI, Rabat · depuis 2023</small></li>
+          <li><b>DEUST (Diplôme d'Études Universitaires Scientifiques et Techniques)</b><small>FST Mohammedia · 2021 – 2023</small></li>
+          <li><b>Baccalauréat Sciences Physiques</b><small>Groupe scolaire Al Maarif, Salé · 2021</small></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Certifications</h2>
+        <ul class="list">
+          <li><b>Oracle Cloud Infrastructure 2025 AI Foundations Associate</b><small>Oracle · avril 2026</small></li>
+          <li><b>Python</b><small>IBM, Coursera · mars 2025</small></li>
+          <li><b>Software Design and Project Management</b><small>University of Hong Kong, Coursera · mars 2025</small></li>
+          <li><b>Recherche documentaire</b><small>Institut Polytechnique de Paris, Coursera · avril 2025</small></li>
+          <li><b>The Unix Workbench</b><small>Johns Hopkins University, Coursera · décembre 2024</small></li>
+          <li><b>C++</b><small>EPFL, Coursera · novembre – décembre 2024</small></li>
+          <li><b>JavaScript</b><small>University of Michigan, Coursera · octobre – novembre 2024</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h2>Langues</h2>
+        <ul class="list bars">
+          <li><span><b>Arabe</b><small>Langue maternelle</small></span><span class="lv" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></span></li>
+          <li><span><b>Français</b><small>B2</small></span><span class="lv" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span></li>
+          <li><span><b>Anglais</b><small>B2</small></span><span class="lv" aria-hidden="true"><i class="f"></i><i class="f"></i><i class="f"></i><i></i></span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Savoir-être</h2>
+        <div class="qual"><span>Autonome et rigoureux</span><span>Esprit d'analyse</span><span>Résolution de problèmes</span><span>Apprentissage rapide</span><span>Travail en équipe</span></div>
+        <p style="color:var(--muted);margin-top:26px">Centres d'intérêt : voyage, natation, photographie, musique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Travaillons ensemble</h2>
+    <p>Je recherche un stage de fin d'études (PFE). Écris-moi, je réponds rapidement.</p>
+    <div class="btns" style="margin-top:22px">
+      <a class="btn main" href="mailto:hachimialaouiy@gmail.com">Envoyer un e-mail</a>
+      <button class="btn" id="copy">Copier l'e-mail</button>
+      <a class="btn" href="tel:+212624969814">Appeler</a>
+      <!-- Remplace # par tes vrais liens -->
+      <a class="btn" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Youssef12341234" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="copied" id="msg" role="status"></div>
+    <p style="font-size:.95rem">Kenitra, Maroc · hachimialaouiy@gmail.com · 06 24 96 98 14</p>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 Youssef Hachimi Alaoui</div></footer>
+<button id="top" aria-label="Retour en haut">↑</button>
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const root=document.documentElement;
+
+/* Couleur d'accent + mode clair/sombre (mémorisés) */
+const save=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const load=k=>{try{return localStorage.getItem(k)}catch(e){return null}};
+function setAccent(c){root.dataset.accent=c;$$('.dot').forEach(d=>d.setAttribute('aria-pressed',d.dataset.c===c));save('accent',c)}
+function setTheme(t){root.dataset.theme=t;$('#mode').textContent=t==='dark'?'☀':'☾';save('theme',t)}
+setAccent(load('accent')||'bleu');
+setTheme(load('theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));
+$$('.dot').forEach(d=>d.onclick=()=>setAccent(d.dataset.c));
+$('#mode').onclick=()=>setTheme(root.dataset.theme==='dark'?'light':'dark');
+
+/* Menu mobile */
+$('#burger').onclick=()=>$('#menu').classList.toggle('open');
+$$('#menu a').forEach(a=>a.onclick=()=>$('#menu').classList.remove('open'));
+
+/* Texte animé du titre */
+const roles=['Ingénieur Data Science & IA','Data Analyst Power BI','NLP & Machine Learning','Python · SQL · Power BI'];
+let ri=0,ci=0,del=false;const typed=$('#typed');
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  (function tick(){
+    const w=roles[ri];ci+=del?-1:1;typed.textContent=w.slice(0,ci);
+    let t=del?35:70;
+    if(!del&&ci===w.length){del=true;t=1600}
+    else if(del&&ci===0){del=false;ri=(ri+1)%roles.length;t=300}
+    setTimeout(tick,t);
+  })();
+}
+
+/* Expériences dépliables */
+$$('.xp').forEach(x=>{
+  const b=$('button',x);
+  b.onclick=()=>{const o=x.hasAttribute('open');x.toggleAttribute('open',!o);b.setAttribute('aria-expanded',!o)};
+});
+
+/* Projets filtrables */
+const projects=[
+ ['ia','Data & IA','Smart CV-Parser & Matcher','Outil RH qui extrait les compétences d\'un CV et calcule un score de matching avec une fiche de poste.',['Python','SpaCy','Sentence-Transformers','Streamlit','PostgreSQL']],
+ ['ia','Data & IA','Application décisionnelle Power BI','Nettoyage, modélisation et tableaux de bord interactifs pour suivre des indicateurs de performance.',['Power BI','Data Modeling']],
+ ['ia','Data & IA','Nettoyage et visualisation de données','Préparation et exploration d\'un jeu de données avec des visualisations claires.',['Python','Jupyter']],
+ ['bd','Bases de données','Chiffrement et hachage de données sensibles','Protection de données avec SHA-256 et SHA-512, plus une application mobile de visualisation.',['Oracle','SQL Server','SHA-256 / 512']],
+ ['bd','Bases de données','Gestion de recettes de cuisine','Application qui combine plusieurs bases NoSQL pour stocker recettes, relations et cache.',['MongoDB','Redis','Neo4j','JavaScript']],
+ ['web','Web','Gestion d\'événements','Application web pour organiser et suivre des événements.',['Node.js','React']],
+ ['web','Web','Gestion de bibliothèque','Application web pour gérer livres, membres et emprunts.',['Laravel','MySQL']],
+ ['web','Web','Messagerie web','Application de communication par messages entre utilisateurs.',['Python','Django','MySQL']],
+ ['web','Web','Plateforme de gestion des unités mobiles','Plateforme digitale pour suivre et gérer des unités mobiles.',['Python','Django']],
+ ['web','Web','Gestion d\'un centre de formation','Application web pour administrer un centre de formation.',['ASP.NET Core MVC','SQL Server']],
+ ['desk','Application bureau','Gestion des stocks et des commandes','Application de bureau pour suivre les stocks et les commandes.',['Java','Swing']],
+ ['desk','Application bureau','Gestion de cabinet dentaire','Application de bureau pour gérer un cabinet dentaire.',['Java','Swing']],
+ ['sys','Systèmes & cloud','Hyper-V contre ESXi','Comparaison des performances de deux solutions de virtualisation.',['Virtualisation','Cloud'] ]
+];
+const grid=$('#grid');
+grid.innerHTML=projects.map(p=>`<article class="card" data-k="${p[0]}"><span class="cat">${p[1]}</span><h3>${p[2]}</h3><p>${p[3]}</p><div class="tags">${p[4].map(t=>`<span class="tag">${t}</span>`).join('')}</div></article>`).join('');
+$$('.f').forEach(b=>b.onclick=()=>{
+  $$('.f').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  $$('.card',grid).forEach(c=>c.hidden=!(b.dataset.f==='all'||c.dataset.k===b.dataset.f));
+});
+
+/* Compétences par onglets */
+const skills={
+ 'Data & Analyse':['Python','SQL / PL-SQL','pandas','NumPy','Jupyter / Google Colab','Nettoyage de données','Exploration de données','Modélisation de données'],
+ 'Machine Learning & IA':['Machine learning','Scikit-Learn','NLP','SpaCy','Sentence-Transformers','Embeddings','Systèmes RAG','LangGraph'],
+ 'BI & Visualisation':['Power BI','Tableaux de bord interactifs','Indicateurs de performance (KPI)','Streamlit','Visualisation avec Python'],
+ 'Bases de données':['Oracle','PostgreSQL','SQL Server','MySQL','MongoDB','Redis','Neo4j','Cassandra'],
+ 'Outils & déploiement':['Git / GitHub','Linux / Unix','Hugging Face Spaces','n8n (automatisation)','API REST','Virtualisation / cloud','Oracle Cloud (OCI AI Foundations)'],
+ 'Autres langages':['Java','C / C++','C#','JavaScript','TypeScript','PHP']
+};
+const tabs=$('#tabs'),panels=$('#panels');
+Object.entries(skills).forEach(([k,v],i)=>{
+  const b=document.createElement('button');b.className='f';b.textContent=k;b.setAttribute('role','tab');b.setAttribute('aria-pressed',i===0);
+  const p=document.createElement('div');p.className='panel'+(i===0?' on':'');p.innerHTML='<div class="tags">'+v.map(t=>`<span class="tag">${t}</span>`).join('')+'</div>';
+  b.onclick=()=>{$$('.f',tabs).forEach(x=>x.setAttribute('aria-pressed',x===b));$$('.panel').forEach(x=>x.classList.toggle('on',x===p))};
+  tabs.append(b);panels.append(p);
+});
+
+/* Copier l'e-mail */
+$('#copy').onclick=async()=>{
+  const m=$('#msg');
+  try{await navigator.clipboard.writeText('hachimialaouiy@gmail.com');m.textContent='E-mail copié.'}
+  catch(e){m.textContent='Copie impossible : hachimialaouiy@gmail.com'}
+  setTimeout(()=>m.textContent='',2500);
+};
+
+/* Lien actif dans le menu + retour en haut */
+const secs=$$('main section[id]');
+addEventListener('scroll',()=>{
+  const y=scrollY+120;let cur='';
+  secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});
+  $$('#menu a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur));
+  $('#top').classList.toggle('show',scrollY>600);
+},{passive:true});
+$('#top').onclick=()=>scrollTo({top:0});
+</script>
+</body>
+</html>
